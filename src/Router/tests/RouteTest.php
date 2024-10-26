@@ -22,6 +22,17 @@ class RouteTest extends BaseTestCase
         $this->assertSame('', $route->getUriHandler()->getPrefix());
     }
 
+    public function testHasUriHandler(): void
+    {
+        $route = new Route('/action', Call::class);
+
+        $this->assertFalse($route->hasUriHandler());
+
+        $route = $route->withUriHandler(new UriHandler(new UriFactory()));
+
+        $this->assertTrue($route->hasUriHandler());
+    }
+
     #[DataProvider('prefixesDataProvider')]
     public function testPrefix(string $prefix, string $expected): void
     {

@@ -104,11 +104,7 @@ final class RouteGroup
                 }
             }
 
-            try {
-                $uriHandler = $route->getUriHandler();
-            } catch (\Throwable) {
-                $uriHandler = $factory->make(UriHandler::class);
-            }
+            $uriHandler = $route->hasUriHandler() ? $route->getUriHandler() : $factory->make(UriHandler::class);
 
             $router->setRoute(
                 $name,

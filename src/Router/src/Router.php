@@ -205,11 +205,7 @@ final class Router implements RouterInterface
             $route = $route->withContainer($this->container);
         }
 
-        try {
-            $uriHandler = $route->getUriHandler();
-        } catch (\Throwable) {
-            $uriHandler = $this->uriHandler;
-        }
+        $uriHandler = $route->hasUriHandler() ? $route->getUriHandler() : $this->uriHandler;
 
         return $route->withUriHandler($uriHandler->withBasePath($this->basePath));
     }

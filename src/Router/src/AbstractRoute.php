@@ -46,6 +46,11 @@ abstract class AbstractRoute implements RouteInterface
         return $route;
     }
 
+    public function hasUriHandler(): bool
+    {
+        return isset($this->uriHandler);
+    }
+
     public function getUriHandler(): UriHandler
     {
         return $this->uriHandler;

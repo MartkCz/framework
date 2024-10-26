@@ -22,6 +22,8 @@ interface RouteInterface extends RequestHandlerInterface
 
     public function withUriHandler(UriHandler $uriHandler): RouteInterface;
 
+    public function hasUriHandler(): bool;
+
     public function getUriHandler(): UriHandler;
 
     /**
